@@ -42,7 +42,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "DRFAPI_test__main.apps.DrfapiTestMainConfig",
     "rest_framework",
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -67,6 +72,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.media",
             ],
         },
     },
@@ -108,6 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = "DRFAPI_test__main.User"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -124,16 +131,32 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+STATICFILES_DIRS = [
+    BASE_DIR / "./static",
+]
+
 STATIC_URL = "static/"
+
+
+MEDIA_ROOT = BASE_DIR / "./media"
+MEDIA_URL = "media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": (
         "rest_framework.renderers.JSONRenderer",
         # 'rest_framework.renderers.BrowsableAPIRenderer',
     ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
