@@ -13,6 +13,7 @@ router.register(r"random_numbers", views__api.RandomNumbers, basename="random_nu
 urlpatterns = [
     path('', TemplateView.as_view(template_name="index.html")),
     path('fortune_cookies/', TemplateView.as_view(template_name="fortune_cookies.html")),
+    path('random_numbers/', TemplateView.as_view(template_name="random_numbers.html")),
     path(
         "api/",
         include(router.urls),

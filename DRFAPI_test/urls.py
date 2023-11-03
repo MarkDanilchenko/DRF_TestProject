@@ -24,6 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/registration', views.registration, name="registration"),
+    # authentication through api
+    path('api/drf-auth/', include('rest_framework.urls')),
+    # ----------
     path('', include('DRFAPI_test__main.urls')),
 ]
 
