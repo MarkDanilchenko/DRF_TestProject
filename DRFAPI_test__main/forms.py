@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from . import models
 
 
+# form for User registration
 class UserForm(UserCreationForm):
     email = forms.EmailField(
         max_length=250,
@@ -20,10 +21,46 @@ class UserForm(UserCreationForm):
 
     class Meta:
         model = models.User
-        fields = ["username",
-                  "email",
-                  "first_name",
-                  "last_name",
-                  "password1",
-                  "password2",
-                  "phone", ]
+        fields = [
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "password1",
+            "password2",
+            "phone",
+        ]
+
+
+class PoemForm(forms.ModelForm):
+    title = forms.CharField(
+        max_length=100,
+        required=True,
+        help_text="Title of the Poem",
+        label="Title",
+    )
+
+    text = forms.CharField(
+        max_length=5000,
+        required=True,
+        help_text="Text of the Poem",
+        label="Text",
+    )
+
+    author = forms.ModelChoiceField(
+        queryset=models.Author.objects.all(),
+        required=True,
+        help_text="Author of the Poem",
+        label="Author",
+    )
+
+    theme = forms.ModelChoiceField(
+        queryset=models.Theme.objects.all(),
+        required=True,
+        help_text="Theme of the Poem",
+        label="Theme",
+    )
+
+    class Meta:
+        model = models.Poem
+        fields = "__all__"

@@ -6,4 +6,13 @@ from rest_framework import serializers
 class FortuneCookiesSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.FortuneCookies
-        fields = '__all__'
+        fields = "__all__"
+
+
+# task 3 serializer
+class PoemSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField()
+    theme = serializers.StringRelatedField()
+    class Meta:
+        model = models.Poem
+        fields = "__all__"

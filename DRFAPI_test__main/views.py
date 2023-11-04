@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from . import forms
+from . import forms, models
 
 
 # registartion
@@ -17,3 +17,13 @@ def registration(request):
     else:
         form = forms.UserForm()
     return render(request, "registration.html", {"form": form})
+
+# render poems html with themes and authors selected options
+def poems(request):
+    resultThemes = models.Theme.objects.all()
+    resultAuthors = models.Author.objects.all()
+    return render(
+        request,
+        "poems.html",
+        {"resultThemes": resultThemes, "resultAuthors": resultAuthors},
+    )

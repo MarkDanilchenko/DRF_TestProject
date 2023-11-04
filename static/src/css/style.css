@@ -525,6 +525,17 @@ footer {
   text-shadow: 0px 0px 15px rgb(92, 92, 92);
 }
 
+#randomPoemResult, #randomPoemByAuthorResult, #randomPoemByThemeResult {
+  min-height: 250px;
+  box-shadow: 0px 0px 25px 5px rgb(191, 191, 191);
+  padding: 10px;
+}
+#randomPoemResult span, #randomPoemByAuthorResult span, #randomPoemByThemeResult span {
+  font-size: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  text-shadow: 0px 0px 15px rgb(92, 92, 92);
+}
+
 .gr-1 {
   background: linear-gradient(135deg, rgb(220, 220, 220) 30%, rgb(191, 191, 191) 50%, rgb(92, 92, 92) 100%);
 }

@@ -1,0 +1,71 @@
+{% extends 'index.html' %} {% block content %} {% autoescape off %}
+
+<div class="row">
+	<div class="col-10 offset-1">
+		<h3 class="logoString_h3 text-center">Poems</h3>
+		<p class="text-center mt-5">Here you can find Your favorite Poems!</p>
+		<ul class="text-small">
+			<li>Get a random poems;</li>
+			<li>Get a random poem by the selected author;</li>
+			<li>Get a random poem by the selected theme.</li>
+		</ul>
+		<hr />
+		<div class="row text-center d-flex align-items-center mb-5">
+			<div class="col-4 offset-0 text-center">
+				<p class="text-center text-small text-secondary">Get a <b>random poem</b> <br />for today!</p>
+				<button class="btn btn-outline-secondary" id="randomPoem">Random!</button>
+			</div>
+			<div class="col-6 offset-1 border border-2 rounded rounded-2 d-flex flex-column" id="randomPoemResult">
+				
+			</div>
+		</div>
+		<div class="row text-center d-flex align-items-center mb-5">
+			<div class="col-4 offset-0 text-center d-flex flex-column justify-content-center align-items-center">
+				<p class="text-center text-small text-secondary">
+					Get a random poem <br />
+					by <b>selected theme</b>
+				</p>
+				<form id="randomPoemByTheme" method="post" action="" enctype="application/x-www-form-urlencoded">
+					{% csrf_token %}
+					<div class="d-flex col-10 offset-1 mb-3">
+						{% if resultThemes %}
+						<select class="form-select form-select-sm" name="theme" aria-label="Select poems' theme">
+							<option selected disabled>Choose theme</option>
+							{% for i in resultThemes %}
+							<option value="{{i.theme}}">{{i.theme}}</option>
+							{% endfor %}
+						</select>
+						{% endif %}
+					</div>
+					<button type="submit" class="btn btn-outline-secondary" id="">Random!</button>
+				</form>
+			</div>
+			<div class="col-6 offset-1 border border-2 rounded rounded-2 d-flex flex-column" id="randomPoemByThemeResult"></div>
+		</div>
+		<div class="row text-center d-flex align-items-center mb-5">
+			<div class="col-4 offset-0 text-center d-flex flex-column justify-content-center align-items-center">
+				<p class="text-center text-small text-secondary">
+					Get a random poem <br />
+					by <b>selected Author</b>
+				</p>
+				<form id="randomPoemByAuthor" method="post" action="" enctype="application/x-www-form-urlencoded">
+					{% csrf_token %}
+					<div class="d-flex col-10 offset-1 mb-3">
+						{% if resultAuthors %}
+						<select class="form-select form-select-sm" name="author" aria-label="Select poems' Author">
+							<option selected disabled>Choose Author</option>
+							{% for i in resultAuthors %}
+							<option value="{{i.name}}">{{i.name}}</option>
+							{% endfor %}
+						</select>
+						{% endif %}
+					</div>
+					<button type="submit" class="btn btn-outline-secondary" id="">Random!</button>
+				</form>
+			</div>
+			<div class="col-6 offset-1 border border-2 rounded rounded-2 d-flex flex-column" id="randomPoemByAuthorResult"></div>
+		</div>
+	</div>
+</div>
+
+{% endautoescape %} {% endblock %}
