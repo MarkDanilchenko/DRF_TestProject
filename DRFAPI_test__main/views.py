@@ -18,6 +18,7 @@ def registration(request):
         form = forms.UserForm()
     return render(request, "registration.html", {"form": form})
 
+
 # render poems html with themes and authors selected options
 def poems(request):
     resultThemes = models.Theme.objects.all()
@@ -25,5 +26,15 @@ def poems(request):
     return render(
         request,
         "poems.html",
+        {"resultThemes": resultThemes, "resultAuthors": resultAuthors},
+    )
+
+# render poems html with themes and authors selected options on the page with more filters
+def poemsMoreFilters(request):
+    resultThemes = models.Theme.objects.all()
+    resultAuthors = models.Author.objects.all()
+    return render(
+        request,
+        "poemsMore.html",
         {"resultThemes": resultThemes, "resultAuthors": resultAuthors},
     )

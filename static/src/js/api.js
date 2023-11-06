@@ -1,3 +1,10 @@
+// button for window reload
+if (document.getElementById('resetPage')) {
+  document.getElementById('resetPage').addEventListener('click', () => {
+    window.location.reload();
+  });
+}
+
 // // task 1 url (Fortune Cookies)
 // // task 1 url (Fortune Cookies)
 // // task 1 url (Fortune Cookies)
@@ -154,9 +161,11 @@ if (getRandomPoem) {
       .then((response) => response.json())
       .then((data) => {
         randomPoemResult.innerHTML = `
-        <span class="text-center mb-3">${data.result.title}</span>
-        <p class="px-3">${data.result.text}</p>
-        <span class="text-end"><i>${data.result.author}</i></span>
+        <div id="list" class="">
+          <p class="text-center mb-3">${data.result.title}</p>
+          <p class="px-3">${data.result.text}</p>
+          <p class="text-end">"<i>${data.result.author}</i>"</p>
+        </div>
         `;
       })
       .catch((error) => {
@@ -191,9 +200,11 @@ if (randomPoemByTheme) {
       .then((response) => response.json())
       .then((data) => {
         randomPoemByThemeResult.innerHTML = `
-        <span class="text-center mb-3">${data.result.title}</span>
-        <p class="px-3">${data.result.text}</p>
-        <span class="text-end"><i>${data.result.author}</i></span>
+        <div id="list" class="">
+          <p class="text-center mb-3">${data.result.title}</p>
+          <p class="px-3">${data.result.text}</p>
+          <p class="text-end">"<i>${data.result.author}</i>"</p>
+        </div>
       `;
       })
       .catch((error) => {
@@ -224,9 +235,143 @@ if (randomPoemByAuthor) {
       .then((response) => response.json())
       .then((data) => {
         randomPoemByAuthorResult.innerHTML = `
-        <span class="text-center mb-3">${data.result.title}</span>
-        <p class="px-3">${data.result.text}</p>
-        <span class="text-end"><i>${data.result.author}</i></span>`;
+        <div id="list" class="">
+          <p class="text-center mb-3">${data.result.title}</p>
+          <p class="px-3">${data.result.text}</p>
+          <p class="text-end">"<i>${data.result.author}</i>"</p>
+        </div>`;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+}
+
+// 4.1
+const url4_1 = 'http://127.0.0.1:8000/api/poems/getAuthorsList/';
+// // button
+const getAuthorsList = document.getElementById('getAuthorsList');
+// // render block
+const getAuthorsListResult = document.getElementById('getAuthorsListResult');
+if (getAuthorsList) {
+  getAuthorsList.addEventListener('click', () => {
+    fetch(url4_1, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        getAuthorsListResult.innerHTML = `
+        <div id="list" class="">
+          <p class="text-center"><b>Full Authors' list</b></p>
+          <ol>
+          ${data.result.reduce((acc, elem) => `${acc}<li>${elem}</li>`, '')}
+          </ol>
+        </div>`;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+}
+
+// 4.2
+const url4_2 = 'http://127.0.0.1:8000/api/poems/getThemesList/';
+// // button
+const getThemesList = document.getElementById('getThemesList');
+// // render block
+const getThemesListResult = document.getElementById('getThemesListResult');
+if (getThemesList) {
+  getThemesList.addEventListener('click', () => {
+    fetch(url4_2, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        getThemesListResult.innerHTML = `
+        <div id="list" class="">
+          <p class="text-center"><b>Full Themes' list</b></p>
+          <ol>
+          ${data.result.reduce((acc, elem) => `${acc}<li>${elem}</li>`, '')}
+          </ol>
+        </div>`;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+}
+
+// 4.3
+const url4_3 = 'http://127.0.0.1:8000/api/poems/getPoemsListByAuthor/';
+// // form POST
+const getPoemsListByAuthor = document.getElementById('getPoemsListByAuthor');
+// // render block
+const getPoemsListByAuthorResult = document.getElementById('getPoemsListByAuthorResult');
+if (getPoemsListByAuthor) {
+  getPoemsListByAuthor.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    fetch(url4_3, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
+      },
+      mode: 'cors',
+      body: JSON.stringify(Object.fromEntries(formData)),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        getPoemsListByAuthorResult.innerHTML = `
+        <div id="list" class="">
+        <p class="text-center"><b>${data.author}'s <br><span class="text-small">poems list</span></br></p>
+        <ol>
+        ${data.result.reduce((acc, elem) => `${acc}<li>${elem}</li>`, '')}
+        </ol>
+        </div>`;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+}
+
+// 4.4
+const url4_4 = 'http://127.0.0.1:8000/api/poems/getPoemsListByTheme/';
+// // form POST
+const getPoemsListByTheme = document.getElementById('getPoemsListByTheme');
+// // render block
+const getPoemsListByThemeResult = document.getElementById('getPoemsListByThemeResult');
+if (getPoemsListByTheme) {
+  getPoemsListByTheme.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    fetch(url4_4, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
+      },
+      mode: 'cors',
+      body: JSON.stringify(Object.fromEntries(formData)),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        getPoemsListByThemeResult.innerHTML = `
+        <div id="list" class="">
+        <p class="text-center"><b>${data.theme}</b></p>
+        <ol>
+        ${data.result.reduce((acc, elem) => `${acc}<li>${elem}</li>`, '')}
+        </ol>
+        </div>`;
       })
       .catch((error) => {
         console.log(error);

@@ -43,6 +43,7 @@ class RandomNumbers(viewsets.ModelViewSet):
 class Poem(viewsets.ModelViewSet):
     queryset = models.Poem.objects.all()
     serializer_class = serializers__api.PoemSerializer
+    permission_classes = [permissions.IsAuthenticated, permissions.IsAdminUser]
 
     @action(methods=["get"], detail=False)
     def randomPoem(self, request):
@@ -69,3 +70,39 @@ class Poem(viewsets.ModelViewSet):
         )
         result = Poem.serializer_class(result)
         return response.Response({"result": result.data})
+
+    @action(methods=["get"], detail=False)
+    def getAuthorsList(self, request):
+        result = (
+            models.Poem.objects.values_list("author__name", flat=True)
+            .distinct()
+            .order_by("author__name")
+        )
+        return response.Response({"result": list(result)})
+
+    @action(methods=["get"], detail=False)
+    def getThemesList(self, request):
+        result = (
+            models.Poem.objects.values_list("theme__theme", flat=True)
+            .distinct()
+            .order_by("theme__theme")
+        )
+        return response.Response({"result": list(result)})
+
+    @action(methods=["post"], detail=False)
+    def getPoemsListByAuthor(self, request):
+        result = (
+            models.Poem.objects.filter(author__name=request.data["author"])
+            .values_list("title", flat=True)
+            .order_by("title")
+        )
+        return response.Response({"result": result, "author": request.data["author"]})
+
+    @action(methods=["post"], detail=False)
+    def getPoemsListByTheme(self, request):
+        result = (
+            models.Poem.objects.filter(theme__theme=request.data["theme"])
+            .values_list("title", flat=True)
+            .order_by("title")
+        )
+        return response.Response({"result": result, "theme": request.data["theme"]})

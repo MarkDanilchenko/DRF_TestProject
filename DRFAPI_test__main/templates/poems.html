@@ -7,7 +7,8 @@
 		<ul class="text-small">
 			<li>Get a random poems;</li>
 			<li>Get a random poem by the selected author;</li>
-			<li>Get a random poem by the selected theme.</li>
+			<li>Get a random poem by the selected theme;</li>
+			<li><a href="{% url 'poemsMoreFilters' %}" class="nav-link" title="More filters"><b>More filters.</b></a></li>
 		</ul>
 		<hr />
 		<div class="row text-center d-flex align-items-center mb-5">
@@ -15,8 +16,8 @@
 				<p class="text-center text-small text-secondary">Get a <b>random poem</b> <br />for today!</p>
 				<button class="btn btn-outline-secondary" id="randomPoem">Random!</button>
 			</div>
-			<div class="col-6 offset-1 border border-2 rounded rounded-2 d-flex flex-column" id="randomPoemResult">
-				
+			<div class="col-6 offset-1 border border-2 rounded rounded-2 d-flex flex-column justify-content-center" id="randomPoemResult">
+				<div class="text-small"><i>Get Your random poem here!</i></div>
 			</div>
 		</div>
 		<div class="row text-center d-flex align-items-center mb-5">
@@ -40,7 +41,9 @@
 					<button type="submit" class="btn btn-outline-secondary" id="">Random!</button>
 				</form>
 			</div>
-			<div class="col-6 offset-1 border border-2 rounded rounded-2 d-flex flex-column" id="randomPoemByThemeResult"></div>
+			<div class="col-6 offset-1 border border-2 rounded rounded-2 d-flex flex-column justify-content-center" id="randomPoemByThemeResult">
+				<div class="text-small"><i>Choose the theme and Get Your random poem here!</i></div>
+			</div>
 		</div>
 		<div class="row text-center d-flex align-items-center mb-5">
 			<div class="col-4 offset-0 text-center d-flex flex-column justify-content-center align-items-center">
@@ -63,7 +66,14 @@
 					<button type="submit" class="btn btn-outline-secondary" id="">Random!</button>
 				</form>
 			</div>
-			<div class="col-6 offset-1 border border-2 rounded rounded-2 d-flex flex-column" id="randomPoemByAuthorResult"></div>
+			<div class="col-6 offset-1 border border-2 rounded rounded-2 d-flex flex-column justify-content-center" id="randomPoemByAuthorResult">
+				<div class="text-small"><i>Choose the Author and Get Your random poem here!</i></div>
+			</div>
+		</div>
+		<div class="row text-center d-flex align-items-center mb-5">
+			<div class="col-10 offset-1">
+				<button class="btn btn-outline-danger" id="resetPage">Reset page</button>
+			</div>
 		</div>
 	</div>
 </div>

@@ -19,6 +19,7 @@ urlpatterns = [
     ),
     path("random_numbers/", TemplateView.as_view(template_name="random_numbers.html")),
     path("poems/", views.poems, name="poems"),
+    path("poemsMoreFilters/", views.poemsMoreFilters, name="poemsMoreFilters"),
     path(
         "api/",
         include(router.urls),

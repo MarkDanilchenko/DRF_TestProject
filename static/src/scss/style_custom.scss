@@ -94,13 +94,20 @@ footer {
 }
 
 // task 3 Random Poem
-#randomPoemResult, #randomPoemByAuthorResult, #randomPoemByThemeResult {
+#randomPoemResult, #randomPoemByAuthorResult, #randomPoemByThemeResult, #getAuthorsListResult, #getThemesListResult, #getPoemsListByAuthorResult, #getPoemsListByThemeResult {
 	min-height: 250px;
 	box-shadow: 0px 0px 25px 5px $custom_grey;
 	padding: 10px;
-	span {
+	p:nth-child(1), p:nth-child(3) {
 		font-size: 1rem;
 		font-family: $font-family-JetBrains;
 		text-shadow: 0px 0px 15px $custom_darkgrey;
+	}
+}
+
+#randomPoemResult, #randomPoemByAuthorResult, #randomPoemByThemeResult, #getAuthorsListResult, #getThemesListResult, #getPoemsListByAuthorResult, #getPoemsListByThemeResult {
+	overflow-y: auto;
+	div#list {
+		max-height: 230px;
 	}
 }

@@ -525,15 +525,22 @@ footer {
   text-shadow: 0px 0px 15px rgb(92, 92, 92);
 }
 
-#randomPoemResult, #randomPoemByAuthorResult, #randomPoemByThemeResult {
+#randomPoemResult, #randomPoemByAuthorResult, #randomPoemByThemeResult, #getAuthorsListResult, #getThemesListResult, #getPoemsListByAuthorResult, #getPoemsListByThemeResult {
   min-height: 250px;
   box-shadow: 0px 0px 25px 5px rgb(191, 191, 191);
   padding: 10px;
 }
-#randomPoemResult span, #randomPoemByAuthorResult span, #randomPoemByThemeResult span {
+#randomPoemResult p:nth-child(1), #randomPoemResult p:nth-child(3), #randomPoemByAuthorResult p:nth-child(1), #randomPoemByAuthorResult p:nth-child(3), #randomPoemByThemeResult p:nth-child(1), #randomPoemByThemeResult p:nth-child(3), #getAuthorsListResult p:nth-child(1), #getAuthorsListResult p:nth-child(3), #getThemesListResult p:nth-child(1), #getThemesListResult p:nth-child(3), #getPoemsListByAuthorResult p:nth-child(1), #getPoemsListByAuthorResult p:nth-child(3), #getPoemsListByThemeResult p:nth-child(1), #getPoemsListByThemeResult p:nth-child(3) {
   font-size: 1rem;
   font-family: "JetBrains Mono", monospace;
   text-shadow: 0px 0px 15px rgb(92, 92, 92);
+}
+
+#randomPoemResult, #randomPoemByAuthorResult, #randomPoemByThemeResult, #getAuthorsListResult, #getThemesListResult, #getPoemsListByAuthorResult, #getPoemsListByThemeResult {
+  overflow-y: auto;
+}
+#randomPoemResult div#list, #randomPoemByAuthorResult div#list, #randomPoemByThemeResult div#list, #getAuthorsListResult div#list, #getThemesListResult div#list, #getPoemsListByAuthorResult div#list, #getPoemsListByThemeResult div#list {
+  max-height: 230px;
 }
 
 .gr-1 {
