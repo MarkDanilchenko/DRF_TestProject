@@ -12,6 +12,7 @@ package-lock.json
 # media
 *.pdf
 *.sql
+!Poems.sql
 db_data/
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/

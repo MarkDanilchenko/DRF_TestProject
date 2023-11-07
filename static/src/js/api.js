@@ -1,3 +1,8 @@
+// docker _HostPort
+const server_HostPort = '0.0.0.0:8900';
+// localhost _HostPort
+// const server_HostPort = '127.0.0.1:8000';
+
 // button for window reload
 if (document.getElementById('resetPage')) {
   document.getElementById('resetPage').addEventListener('click', () => {
@@ -8,8 +13,7 @@ if (document.getElementById('resetPage')) {
 // // task 1 url (Fortune Cookies)
 // // task 1 url (Fortune Cookies)
 // // task 1 url (Fortune Cookies)
-const url = 'http://127.0.0.1:8000/api/fortune_cookies/random';
-
+const url = `http://${server_HostPort}/api/fortune_cookies/random`;
 // // button
 const getFortuneCookies = document.getElementById('getFortuneCookies');
 // // render block
@@ -51,7 +55,7 @@ if (getFortuneCookies) {
 // // task 2 url (Random Numbers)
 // // task 2 url (Random Numbers)
 // 2.1
-const url2_1 = 'http://127.0.0.1:8000/api/random_numbers/randomInt/';
+const url2_1 = `http://${server_HostPort}/api/random_numbers/randomInt/`;
 
 // // button
 const getRandomInt = document.getElementById('randomInt');
@@ -80,7 +84,7 @@ if (getRandomInt) {
 }
 
 // 2.2
-const url2_2 = 'http://127.0.0.1:8000/api/random_numbers/randomIntInRange/';
+const url2_2 = `http://${server_HostPort}/api/random_numbers/randomIntInRange/`;
 // // form POST
 const randomIntInRange = document.getElementById('randomIntInRange');
 // // render block
@@ -112,7 +116,7 @@ if (randomIntInRange) {
 }
 
 // 2.3
-const url2_3 = 'http://127.0.0.1:8000/api/random_numbers/randomList/';
+const url2_3 = `http://${server_HostPort}/api/random_numbers/randomList/`;
 // // button
 const getRandomList = document.getElementById('randomList');
 // // render block
@@ -143,7 +147,7 @@ if (getRandomList) {
 // // task 3 url (Poems)
 // // task 3 url (Poems)
 // 3.1
-const url3_1 = 'http://127.0.0.1:8000/api/poems/randomPoem/';
+const url3_1 = `http://${server_HostPort}/api/poems/randomPoem/`;
 // // button
 const getRandomPoem = document.getElementById('randomPoem');
 // // render block
@@ -179,7 +183,7 @@ if (getRandomPoem) {
 }
 
 // 3.2
-const url3_2 = 'http://127.0.0.1:8000/api/poems/randomPoemByTheme/';
+const url3_2 = `http://${server_HostPort}/api/poems/randomPoemByTheme/`;
 // // form POST
 const randomPoemByTheme = document.getElementById('randomPoemByTheme');
 // // render block
@@ -214,7 +218,7 @@ if (randomPoemByTheme) {
 }
 
 // 3.3
-const url3_3 = 'http://127.0.0.1:8000/api/poems/randomPoemByAuthor/';
+const url3_3 = `http://${server_HostPort}/api/poems/randomPoemByAuthor/`;
 // // form POST
 const randomPoemByAuthor = document.getElementById('randomPoemByAuthor');
 // // render block
@@ -248,7 +252,7 @@ if (randomPoemByAuthor) {
 }
 
 // 4.1
-const url4_1 = 'http://127.0.0.1:8000/api/poems/getAuthorsList/';
+const url4_1 = `http://${server_HostPort}/api/poems/getAuthorsList/`;
 // // button
 const getAuthorsList = document.getElementById('getAuthorsList');
 // // render block
@@ -279,7 +283,7 @@ if (getAuthorsList) {
 }
 
 // 4.2
-const url4_2 = 'http://127.0.0.1:8000/api/poems/getThemesList/';
+const url4_2 = `http://${server_HostPort}/api/poems/getThemesList/`;
 // // button
 const getThemesList = document.getElementById('getThemesList');
 // // render block
@@ -310,7 +314,7 @@ if (getThemesList) {
 }
 
 // 4.3
-const url4_3 = 'http://127.0.0.1:8000/api/poems/getPoemsListByAuthor/';
+const url4_3 = `http://${server_HostPort}/api/poems/getPoemsListByAuthor/`;
 // // form POST
 const getPoemsListByAuthor = document.getElementById('getPoemsListByAuthor');
 // // render block
@@ -345,7 +349,7 @@ if (getPoemsListByAuthor) {
 }
 
 // 4.4
-const url4_4 = 'http://127.0.0.1:8000/api/poems/getPoemsListByTheme/';
+const url4_4 = `http://${server_HostPort}/api/poems/getPoemsListByTheme/`;
 // // form POST
 const getPoemsListByTheme = document.getElementById('getPoemsListByTheme');
 // // render block
